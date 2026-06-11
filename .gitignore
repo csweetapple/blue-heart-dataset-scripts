@@ -1,0 +1,6 @@
+**/.ipynb_checkpoints/
+.venv
+*.egg-info
+outputs/
+__pycache__/
+.gitattributes
