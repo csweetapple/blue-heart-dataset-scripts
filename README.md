@@ -1,6 +1,6 @@
 # Example scripts for the the Blue Heart dataset publication
 
-This repository contains a set of example scripts for accessing, viewing, processing and analysing the Blue Heart dataset (available separately from [INSERT DOI AND REFERENCE]). Further detail on the dataset is available in the associated publication ([INSERT DOI AND REFERENCE]).
+This repository contains a set of example scripts for accessing, viewing, processing and analysing the Blue Heart dataset (available separately from https://doi.org/10.5281/zenodo.20699635).
 
 ## Environment setup
 
@@ -88,7 +88,7 @@ Generation of example timeseries plots and general statistics related to the tim
 * Plot of daily rainfall depths recorded at all rain gauges (each on a separate subplot, with data gaps identified)
 * Plot of water levels recorded at all gauges (of all types) within a specified radius of a defined point, and rainfall from the nearest gauge.
 
-## References
+## Acknowledgements
 
-[DATASET REFERENCE (ZENODO)]
-[ASSOCIATED PUBLICATION REFERENCE]
+This research was completed for the ‘Blue Heart’ project and funded by Defra as part of the £200 million Flood and Coastal Innovation Programmes which is managed by the Environment Agency. The programmes will drive innovation in flood and coastal resilience and adaptation to a changing climate.
+The authors gratefully acknowledge Southern Water for providing access to their sewer monitoring data and for granting permission to share the dataset publicly.
