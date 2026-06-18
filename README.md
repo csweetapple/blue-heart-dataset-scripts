@@ -1,6 +1,6 @@
 # Example scripts for the the Blue Heart dataset publication
 
-This repository contains a set of example scripts for accessing, viewing, processing and analysing the Blue Heart dataset (available separately from https://doi.org/10.5281/zenodo.20699635).
+This repository contains a set of example scripts for accessing, viewing, processing and analysing the Blue Heart dataset (available separately from https://doi.org/10.5281/zenodo.20699634).
 
 ## Environment setup
 
@@ -24,6 +24,8 @@ uv run jupyter lab
 ```
 
 ## Scripts
+
+These all utilise data from the Blue Heart dataset (https://doi.org/10.5281/zenodo.20699634), which must be downloaded separately. The 'General settings' cell at the start of each notebook defines one or more paths which should be updated to reflect the relative location of the dataset folders.
 
 ### `blue_heart_data_handling.py`
 
