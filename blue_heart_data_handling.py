@@ -81,7 +81,7 @@ def get_gauge_data(
         date_start (pd.Timestamp | None): Only retrieve data from this date
             onwards
         date_end (pd.Timestamp | None): Only retrieve data up until this date
-        path_index_gauge_data (str): Path for gauge data index.
+        path_index_telemetry_data (str): Path for gauge data index.
 
     Returns:
         dict: Dictionary containing separate dataframes for each gauge
@@ -90,8 +90,8 @@ def get_gauge_data(
     """
 
     # Load gauge index
-    path_index_gauge_data = f'{path_root_folder}/index_gauge_data.csv'
-    df_index = _load_gauge_index(path_index_gauge_data)
+    path_index_telemetry_data = f'{path_root_folder}/index_telemetry_data.csv'
+    df_index = _load_gauge_index(path_index_telemetry_data)
 
     # Filter gauges
     df_index_filtered = _filter_gauge_index(
@@ -283,7 +283,7 @@ def _filter_gauge_index(
     if filter_gauge_parameters is not None:
 
         parameter_lists = (
-            df_index['gaugeParameters'].str.split(r',\s*', regex=True)
+            df_index['gaugeParameters'].str.split(r';\s*', regex=True)
             )
         # Strip units from parameter and find
         gauge_mask &= parameter_lists.apply(
@@ -298,13 +298,13 @@ def _filter_gauge_index(
 
 
 def _load_gauge_index(
-        path_index_gauge_data: str
+        path_index_telemetry_data: str
 ):
     """Load gauge data index"""
 
     try:
-        return pd.read_csv(path_index_gauge_data)
+        return pd.read_csv(path_index_telemetry_data)
     except FileNotFoundError:
         raise Exception(
-            f'Error loading gauge data index from {path_index_gauge_data}'
+            f'Error loading gauge data index from {path_index_telemetry_data}'
             )

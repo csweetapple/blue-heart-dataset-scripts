@@ -92,5 +92,5 @@ Generation of example timeseries plots and general statistics related to the tim
 
 ## Acknowledgements
 
-This research was completed for the ‘Blue Heart’ project and funded by Defra as part of the £200 million Flood and Coastal Innovation Programmes which is managed by the Environment Agency. The programmes will drive innovation in flood and coastal resilience and adaptation to a changing climate.
+This research was completed for the ‘Blue Heart’ project and funded by the Department for Environment, Food and Rural Affairs (Defra) as part of the £200 million Flood and Coastal Innovation Programmes which is managed by the Environment Agency. The programmes will drive innovation in flood and coastal resilience and adaptation to a changing climate.
 The authors gratefully acknowledge Southern Water for providing access to their sewer monitoring data and for granting permission to share the dataset publicly.
