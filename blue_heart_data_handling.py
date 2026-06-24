@@ -191,11 +191,27 @@ def get_gauge_data(
     return gauge_dfs
 
 
-def get_intentional_timesteps(df: pd.DataFrame, min_occurrences: float = 100):
+def get_intentional_timesteps(
+        df: pd.DataFrame,
+        min_occurrences: float = 100
+):
+
     """
     Identify different timesteps present in the dataframe index and return
     timesteps that occur at least a specified minimum number of times
+
+    Parameters:
+        df (pd.DataFrame): Dataframe containing timeseries data with datetime
+            index
+        min_occurrences (float): Minimum number of occurrences required for a
+            timestep to be considered intentional
+
+    Returns:
+        pd.Series: Series containing intentional timesteps identified and
+            their occurrence counts
+
     """
+
     attempts = 0
     timesteps_counts = df.reset_index(
         names='timestamp')['timestamp'].diff().value_counts()
@@ -214,6 +230,7 @@ def get_max_intentional_timestep_minutes(
         timesteps_intentional: pd.Series,
         default_minutes: float = 60
         ):
+
     """Identify maximum intentional timestep
 
     Parameters:
@@ -226,16 +243,27 @@ def get_max_intentional_timestep_minutes(
         float: Timestep in minutes
 
     """
+
     if timesteps_intentional.shape[0] > 0:
         return timesteps_intentional.index.max().total_seconds()/60
     return default_minutes
 
 
 def get_modal_intentional_timestep_minutes(
-        timesteps_intentional: pd.Series,   # timesteps_intentional retrieved from get_intentional_timesteps
+        timesteps_intentional: pd.Series,
         ):
+
     """Identify typical (most common) intentional timestep
+
+    Parameters:
+        timesteps_intentional (pd.Series): Intentional timesteps, as retrieved
+            from get_intentional_timesteps
+
+    Returns:
+        float: Timestep in minutes
+
     """
+
     if timesteps_intentional.shape[0] > 0:
         return (
             timesteps_intentional
@@ -248,7 +276,18 @@ def get_modal_intentional_timestep_minutes(
 def _convert_to_tz_aware_index(
         df: pd.DataFrame,
         datetime_column: str = 'timestamp'):
-    """Convert datetime column to timezone-aware times and set as index"""
+
+    """Convert datetime column to timezone-aware times and set as index
+
+    Parameters:
+        df (pd.DataFrame): Dataframe containing timeseries data with a column
+            containing timestamps
+        datetime_column (str): Name of column containing datetime timestamps
+
+    Returns:
+        pd.DataFrame: Dataframe with a timezone-aware datetime index
+
+    """
 
     df[datetime_column] = pd.to_datetime(df[datetime_column])
     is_tz_aware_data = df[datetime_column].dt.tz is not None
@@ -264,8 +303,23 @@ def _filter_gauge_index(
         filter_gauge_types: List[GaugeTypes] | None,
         filter_gauge_parameters: List[GaugeParameters] | None,
 ):
+
     """Filter list of gauges, based on specified gauge name, type and
-    parameter filters"""
+    parameter filters
+
+    Parameters:
+        df_index (pd.DataFrame): Gauge data index
+        filter_gauge_names (List[str] | None): Only return gauge names that
+            appear in this list, if provided.
+        filter_gauge_types (List[GaugeTypes] | None): Only return gauge types
+            that appear in this list, if provided.
+        filter_gauge_parameters (List[GaugeParameters] | None): Only return
+            gauge parameters that appear in this list, if provided.
+
+    Returns:
+        pd.DataFrame: Filtered gauge data index
+
+    """
 
     gauge_mask = pd.Series(True, index=df_index.index)
 
@@ -300,7 +354,16 @@ def _filter_gauge_index(
 def _load_gauge_index(
         path_index_telemetry_data: str
 ):
-    """Load gauge data index"""
+
+    """Load gauge data index]
+
+    Parameters:
+        path_index_telemetry_data (str): Path of index .csv file
+
+    Returns:
+        pd.DataFrame: Index of available gauges
+
+    """
 
     try:
         return pd.read_csv(path_index_telemetry_data)
