@@ -169,7 +169,7 @@ def get_gauge_data(
                 df_parameter.sort_index(inplace=True)
                 df_parameter.reset_index(inplace=True)
                 dt = df_parameter['timestamp'].diff()
-                data_column = df_parameter.columns[0]
+                data_column = df_parameter.columns[1]
                 df_parameter.loc[dt > pd.Timedelta(
                     minutes=timesteps_intentional_max), data_column] = np.nan
                 df_parameter.set_index('timestamp', inplace=True)
